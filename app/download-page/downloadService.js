@@ -3,14 +3,33 @@
 angular.module('downloaderApp')
 .factory('DownloadFactory', ['$resource' , function ($resource) {
     // this.url= "https://api.github.com/users/piersbrennandfrancis";
-    this.url= 'http://127.0.0.1:5000/segments/1/members/';
-    
+    this.urlMembers= 'http://127.0.0.1:5000/segments/1/members';
+    this.urlMembersCount= 'http://127.0.0.1:5000/segments/1/members/count';
 
-    return $resource(this.url, {}, {
-        query: {
-          method: 'GET',
-          isArray: true
+    var resources ={
+        members: $resource(this.urlMembers, {}, {
+            query: {
+              method: 'GET',
+              isArray: true
+            }
+        }),
+        memberCount: $resource(this.urlMembersCount, {}, {
+            get: {
+              method: 'GET',
+            }
+        })
+    };
+
+    return {
+        getMembers: function() {
+            return resources.members.query();
+        },
+        getMembersCount: function() {
+            return resources.memberCount.get();
         }
-    })
+
+    }
+
+
     }
 ]);
