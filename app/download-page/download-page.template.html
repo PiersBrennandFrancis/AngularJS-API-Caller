@@ -1,0 +1,14 @@
+
+Hello {{$ctrl.user}}
+
+<p> 
+    <!-- <a download ng-href="http://api.github.com/users/piersbrennandfrancis">Download JSON</a> -->
+    <!-- <a href="" ng-click="fetchGithubResource()">Download JSON Stuff</a> -->
+    <!-- <button type="button" ng-csv="$ctrl.getJson()" csv-header="['header1', 'header2']" filename="test2.csv">Export</button> -->
+    <a type="button" 
+    ng-csv="$ctrl.generateAdminMembersCsv()" 
+    lazy-load="true" 
+    csv-header="$ctrl.csvConfig.csvHeader"
+    filename="{{$ctrl.csvConfig.filename}}">Export</a>
+
+</p>
