@@ -13,19 +13,31 @@ component('downloadPage', {
       "csvHeader": ["Genesis Sponsor ID", "EmployeeID", "First Name", "Last Name", "Email Address"],
       "filename": "help.csv"
     };
-    // this.csvHeader=["Genesis Sponsor ID", "EmployeeID", "First Name", "Last Name", "Email Address"];
-    // this.filename="help.csv";
 
+    //Function to return promise holding members!
     this.generateAdminMembersCsv = function () {
-        return DownloadFactory.getMembers().$promise.then(function(response) {
+        return DownloadFactory.getMembers(2).$promise.then(function(response) {
             return response;
         });
       };
 
+    //Will get object like {count:72}
+
+    // this.segments=[
+    //   {id: 1, name="abc"},
+    //   {id: 2, name="def"}
+    //   {id: 3, name="ghi"}
+    // ]
+
+    this.memberCount = function getMemberCount(id){
+      self.countObj=DownloadFactory.getMembersCount(id);
+      // return ;
+    }
     
-      this.memberCount=DownloadFactory.getMembersCount();
-      console.log(this.memberCount);
-      console.log(DownloadFactory.getMembersCount());
+    // this.memberCount=getMemberCount;
+
+      // console.log(this.memberCount);
+      // console.log(DownloadFactory.getMembersCount(1));
 
       // this.giveMembersCount = function () {
       //   return DownloadFactory.getMembersCount().$promise.then(function(response) {

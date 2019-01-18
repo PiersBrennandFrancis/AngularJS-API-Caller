@@ -13,4 +13,11 @@ Hello {{$ctrl.user}}
 
 </p>
 
-<p>{{$ctrl.memberCount.count}}</p>
+<!-- <p>{{$ctrl.memberCount(5).count}}</p> -->
+
+<div ng-repeat='id in $ctrl.ids'>
+    <span ng-init="$ctrl.memberCount(id)">{{$ctrl.countObj.count}}</span>
+</div>
+
+
+
