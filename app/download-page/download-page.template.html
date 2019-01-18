@@ -15,9 +15,14 @@ Hello {{$ctrl.user}}
 
 <!-- <p>{{$ctrl.memberCount(5).count}}</p> -->
 
-<div ng-repeat='id in $ctrl.ids'>
+<!-- <div ng-repeat='id in $ctrl.ids'>
     <span ng-init="$ctrl.memberCount(id)">{{$ctrl.countObj.count}}</span>
-</div>
+</div> -->
 
+<div ng-repeat='segment in $ctrl.segments'>
+
+<span>Segment ID: {{segment.id}}... Segment Name: {{segment.name}}... Segment Count: {{segment.countPromise.count}}</span>
+
+</div>
 
 

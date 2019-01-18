@@ -21,19 +21,30 @@ component('downloadPage', {
         });
       };
 
+  
+    this.segments=[
+      {id: 1, name: "abc"},
+      {id: 2, name: "def"},
+      {id: 3, name: "ghi"}
+    ];
+
+
+
     //Will get object like {count:72}
-
-    // this.segments=[
-    //   {id: 1, name="abc"},
-    //   {id: 2, name="def"}
-    //   {id: 3, name="ghi"}
-    // ]
-
     this.memberCount = function getMemberCount(id){
       self.countObj=DownloadFactory.getMembersCount(id);
+      console.log(DownloadFactory.getMembersCount(id));
+      // console.log(self.countObj)
       // return ;
     }
     
+    this.segments.forEach(element => {
+      console.log(element.id);
+      // element.count=element.id;
+      element.countPromise = DownloadFactory.getMembersCount(element.id)
+      // this.memberCount(element.id);
+    });
+
     // this.memberCount=getMemberCount;
 
       // console.log(this.memberCount);
